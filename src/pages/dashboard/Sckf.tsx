@@ -3,7 +3,7 @@ import { Row, Col, Card,  Drawer, Table, Tabs } from 'antd';
 import { useModel } from 'umi'
 import { Chart, Tooltip, Interval, PieChart, Axis, Geom, Coordinate } from "bizcharts";
 import { PageContainer } from '@ant-design/pro-layout';
-
+//dwdd
 
 
 export default () => {

@@ -41,8 +41,20 @@ export default defineConfig({
           path: '/dashboard/qaqc',
           component: './Dashboard/QAQC',
         },
-
+        
       ],
     },
+    {         
+      name: 'Users',
+      path: '/users',
+      component: './users/user',
+    },
   ],
+  "proxy": {
+    "/api": {
+      "target": "http://jsonplaceholder.typicode.com/",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    }
+  },
 });

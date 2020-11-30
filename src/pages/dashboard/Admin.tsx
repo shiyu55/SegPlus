@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
 import { useModel } from 'umi'
-import {  Chart, Tooltip, Interval, PieChart, Axis, Geom } from "bizcharts";
+import { Chart, Tooltip, Interval, PieChart, Axis, Geom } from "bizcharts";
 import { PageContainer } from '@ant-design/pro-layout';
 import ProCard from '@ant-design/pro-card';
+const gridStyle = {
+   width: '25%',
+ };
 export default () => {
    const [visible, setVisible] = useState(false);
    const data1 = useModel('admi')[0];
@@ -19,7 +22,7 @@ export default () => {
 
    return (
       <PageContainer>
-          <Drawer
+         <Drawer
             title="分布表单"
             width={800}
             onClose={() => setVisible(false)}
@@ -32,22 +35,23 @@ export default () => {
             <p>Some contents...</p>
             <p>Some contents...</p>
          </Drawer>
-      
+
          <Button type="primary" onClick={() => setVisible(true)}>
-录入数据
+            录入数据
           </Button>
-       <ProCard>
-            <ProCard colSpan="50%" >
-               <ProCard gutter={[16, 16]} split="vertical"  tabs={{
-                  type: 'card' ,
+         <ProCard>
+            <ProCard colSpan="25%"  style={gridStyle}>
+               <ProCard gutter={[16, 16]} split="vertical" tabs={{
+                  type: 'card',
                   size: 'small',
-              
+
                }} >
-                  <ProCard.TabPane key="tab1" tab="人员动迁批件状态"  >
-                     <PieChart height={400}
+                  <ProCard.TabPane key="tab1" tab="人员动迁批件状态" >
+                  <PieChart 
                         legend={{
                            position: 'bottom-center',
                            offsetY: 10,
+                           
                         }}
                         data={data7}
                         radius={0.8}
@@ -58,7 +62,8 @@ export default () => {
                            type: 'outer',
                            offset: 20,
                         }}
-                     /> </ProCard.TabPane>
+                         /> 
+                         </ProCard.TabPane>
                   <ProCard.TabPane key="tab2" tab="休假下线人员状态">
                      <PieChart height={400}
                         legend={{
@@ -125,7 +130,7 @@ export default () => {
                         //  type: "y"
                         // }}
                         />
-                        <Geom type="interval" position="type*count" color="type" label="count"/>
+                        <Geom type="interval" position="type*count" color="type" label="count" />
                      </Chart>
 
                   </ProCard.TabPane>
@@ -140,14 +145,14 @@ export default () => {
                            color="name"
                            position="type*count"
                            label={'count'
-                        }
+                           }
                         />
                         <Tooltip shared />
                      </Chart>
                   </ProCard.TabPane>
                   <ProCard.TabPane key="tab7" tab="项目部人员">
                      <Chart height={400} data={data2} forceFit>
-                  
+
                         <Axis name="type" />
                         <Axis name="count" />
                         <Tooltip
@@ -156,7 +161,7 @@ export default () => {
                         //  type: "y"
                         // }}
                         />
-                        <Geom type="interval" position="type*count" color="type" label="count"/>
+                        <Geom type="interval" position="type*count" color="type" label="count" />
                      </Chart>
                   </ProCard.TabPane>
                   <ProCard.TabPane key="tab8" tab="间接人员">
@@ -170,7 +175,7 @@ export default () => {
                         //  type: "y"
                         // }}
                         />
-                        <Geom type="interval" position="type*count" color="type" label="count"autoFit/>
+                        <Geom type="interval" position="type*count" color="type" label="count" autoFit />
                      </Chart>
                   </ProCard.TabPane>
                   <ProCard.TabPane key="tab9" tab="直接人员">
@@ -183,12 +188,12 @@ export default () => {
                         //  type: "y"
                         // }}
                         />
-                        <Geom type="interval" position="type*count" label="count" color="type" autoFit/>
+                        <Geom type="interval" position="type*count" label="count" color="type" autoFit />
                      </Chart>
                   </ProCard.TabPane>
                </ProCard>
             </ProCard>
-            </ProCard>
+         </ProCard>
 
 
       </PageContainer>
